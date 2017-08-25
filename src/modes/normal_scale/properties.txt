@@ -1,0 +1,4 @@
+name: full scale 1 column
+layout: 1 column
+default row: 7
+octave size: 12
