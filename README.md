@@ -24,6 +24,7 @@ piano output: pianopad 3
 ```
 After that, you can run the main.py again and it will hopefully run.
 In you daw, set the loopMIDI device as yor input device, and things should work:
+![Imgur](http://i.imgur.com/ZdVFowj.png)
 
 ## Dependencies
 Only [mido](https://github.com/olemb/mido/) so far:
