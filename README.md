@@ -7,7 +7,10 @@ Right now this is far from its final state and usage is recomended only for deve
 Right now (and maybe forever) pianopad won't create a custom midi device for you, so you need to create one. The suggested way is to download [loopMIDI](http://www.tobias-erichsen.de/software/loopmidi.html) that at the same time works great and simple to use.
 That done, create a custom midi device as in the picture below:
 
+![Imgur](http://i.imgur.com/avsdg0h.png)
+
 _(just click the + button and rename as you desire)_
+
 That done, it is time to setup pianopad. Run main.py in a terminal session, ou might see a list of input and output devices listed. There is a file named **devices.txt** at the root directory where you should put the devices name as follows:
 - input: the launchpad input device that has been listed
 - launchpad output: the launchpad output device that has been listed
