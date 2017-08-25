@@ -36,7 +36,6 @@ pip install mido
 # Contributing
 There are some issues created in the tracker about some of the things we may want to have in there. We have 12 function buttons in launchpad, so we gotta fill them all. :D
 Aside from that, all help is welcome, including:
-- Documentation
--- Code Documentation and User Guides
+- Documentation (Code Documentation and User Guides)
 - UI design
 - Testing in different OSs and with different hardware (I only have access to one Launchpad MK2, I don't have the Pro, MK1 and mini)
