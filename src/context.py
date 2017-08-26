@@ -26,6 +26,11 @@ current_mode = modes[current_mode_position]
 current_volume = 100
 current_volume_pos = 47
 
+favorites = {
+    "mode": [None, None],
+    "volume": [None, None]
+}
+
 def cycle_mode(midiout):
     global current_mode_position
     global current_mode
@@ -50,6 +55,8 @@ def next_mode(midiout):
         current_mode = modes[current_mode_position]
 
 
+
+
 def previous_mode(midiout):
     global current_mode_position
     global current_mode
@@ -59,6 +66,14 @@ def previous_mode(midiout):
         modes[current_mode_position].refresh_background(midiout)
 
         current_mode = modes[current_mode_position]
+
+def set_mode(midiout, mode):
+    global current_mode_position
+    global current_mode
+
+    current_mode_position = mode
+    modes[current_mode_position].refresh_background(midiout)
+    current_mode = modes[current_mode_position]
 
 def increase_volume():
     global current_volume
