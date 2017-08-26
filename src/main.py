@@ -2,6 +2,10 @@ import mido
 import time
 import sys
 
+from cefpython3 import cefpython as cef
+import platform
+import os
+
 from mode import Mode
 from launchpad_input_thread import LaunchpadInputThread
 
@@ -37,6 +41,12 @@ def list_devices():
     print("\ninput devices:")
     print(str(mido.get_input_names()))
 
+def check_versions():
+    print("[hello_world.py] CEF Python {ver}".format(ver=cef.__version__))
+    print("[hello_world.py] Python {ver} {arch}".format(
+          ver=platform.python_version(), arch=platform.architecture()[0]))
+    assert cef.__version__ >= "55.3", "CEF Python v55.3+ required to run this"
+
 # Check if we can start or if we need to list devices
 if not parse_devices():
     list_devices()
@@ -50,8 +60,14 @@ print(midiin.name)
 input_thread = LaunchpadInputThread(midiin, midiout_launchpad, midiout_external)
 input_thread.daemon = True
 input_thread.start()
-input_thread.join()
 
-# Wait for the inpur thread to finish
-while True:
-    time.sleep(1)
+# Initialize the UI
+check_versions()
+sys.excepthook = cef.ExceptHook  # To shutdown all CEF processes on error
+cef.Initialize()
+cef.CreateBrowserSync(url=os.path.dirname(os.path.abspath(__file__)) + os.sep + r"ui\main.html",
+                        window_title="Hello World!")
+cef.MessageLoop()
+cef.Shutdown()
+
+input_thread.join()
