@@ -1,4 +1,4 @@
-name: full scale 1 column
+name: All Octaves - 1 Column
 layout: 1 column
 default row: 7
 octave size: 12

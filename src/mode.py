@@ -1,8 +1,8 @@
 import os.path
 import pdb
-import layout
 
-import launchpad_translator as t
+import translator as t
+import map_manager as maps
 
 class Mode:
     """
@@ -140,7 +140,7 @@ class Mode:
 
             # Store the data
             if option_name.strip().lower() in ['name', 'layout', 'default row', 'octave size']:
-                self.properties[option_name.strip().lower()] = option_value.strip().lower()
+                self.properties[option_name.strip().lower()] = option_value.strip()
 
     def validate_consistency(self):
         """
@@ -201,7 +201,7 @@ class Mode:
 
     def get_max_row(self):
         note_amount = len(self.notes)
-        column_size = layout.layouts[self.properties['layout']]
+        column_size = maps.layouts[self.properties['layout']]
         row_amount = 8
         column_amount = 8/column_size
 

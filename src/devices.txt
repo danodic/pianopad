@@ -1,3 +1,0 @@
-input: Launchpad MK2 6
-launchpad output: Launchpad MK2 8
-piano output: pianopad 3
