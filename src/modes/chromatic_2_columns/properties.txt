@@ -1,4 +1,4 @@
-name: All Octaves - 2 Columns
+name: Chromatic Scale - 2 Columns
 layout: 2 columns
 default row: 7
 octave size: 12

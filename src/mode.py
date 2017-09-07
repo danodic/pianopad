@@ -1,5 +1,6 @@
-import os.path
 import pdb
+
+import os.path
 
 import translator as t
 import map_manager as maps
@@ -165,20 +166,7 @@ class Mode:
             #TODO handle exception
             pass
 
-    def set_root_notes(self):
-        """
-        TODO
-        """
-        note_count = len(self.notes)
-        octave_size = self.properties['octave size']
-
-        # Initialize with 0
-        self.root_notes = [0] * note_count
-
-        # Add one root note per octave
-        octave_count = int(note_count/octave_size)
-        for octave in range(octave_count):
-            self.root_notes[(octave*octave_size)+self.current_root_note]
+    
 
     def move_down(self, increment=1):
         """
@@ -211,7 +199,7 @@ class Mode:
         """
         TODO
         """
-        if self.current_root_note < int(self.properties['octave size']) - 1:
+        if self.current_root_note < 11:
             self.current_root_note += 1
 
         self.refresh_playfield()
@@ -231,7 +219,10 @@ class Mode:
         """
 
         # Get the note to be played
-        actual_note = max(min(self.map_note_to_playfield(note) + self.current_root_note, 127), 0)
+        actual_note = min(self.map_note_to_playfield(note) + self.current_root_note, 127)
+
+        if actual_note < 0:
+            return
 
         # Send the music note
         t.note_on(midiout_external, actual_note, velocity)
@@ -300,7 +291,6 @@ class Mode:
                 self.playfield[row] = self.notes[column:column+8]
                 self.background[row] = self.colors[column:column+8]
                 temp_root_notes[row] = self.root_notes[column:column+8]
-        
 
         # Merge the background and the root notes
         for row in range(8):
@@ -342,6 +332,17 @@ class Mode:
         # Intialize the note array
         self.root_notes = [0]*150
 
+        # Find the first C
+        note_count = len(self.notes)
+        for i in range(note_count):
+            note = self.notes[i]
+
+            if note in maps.midi_notes:
+                converted = maps.midi_notes[note]
+                if 'C' in converted.strip().upper() and '#' not in converted.strip().upper():
+                    first_c = i
+                    break
+
         # fill the root notes
         for i in range((int( len(self.notes) / int(self.properties['octave size'] ))) + 2):
-            self.root_notes[int(self.properties['octave size'])*i+self.current_root_note] = 1
+            self.root_notes[(int(self.properties['octave size'])*i+self.current_root_note) + first_c] = 1

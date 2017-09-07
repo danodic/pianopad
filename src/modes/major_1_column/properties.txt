@@ -1,0 +1,4 @@
+name: Major Scale - 1 Column
+layout: 1 column
+default row: 2
+octave size: 7

@@ -52,3 +52,11 @@ def set_volume(note):
     # define the volume
     current_volume_pos = note_index
     current_volume = maps.volume_positions[current_volume_pos]
+
+def set_volume_position(pos):
+    global current_volume
+    global current_volume_pos
+
+    # define the volume
+    current_volume_pos = pos
+    current_volume = maps.volume_positions[current_volume_pos]

@@ -93,7 +93,7 @@ class MainWindow(tk.Frame):
         self.scroll_modes.config(command=self.lstb_listbox_modes.yview)
 
         # Scales
-        self.scale_volume = ttk.Scale(self.frame_volume, variable=self.var_volume_scale, from_=0, to=63, orient=tk.HORIZONTAL)
+        self.scale_volume = ttk.Scale(self.frame_volume, variable=self.var_volume_scale, from_=0, to=63, orient=tk.HORIZONTAL, command=self.callback_update_volume)
 
         # Buttons
         self.all_keys = []
@@ -182,6 +182,10 @@ class MainWindow(tk.Frame):
         self.var_ext_output.trace_add("write", self.callback_ext_output)
 
         self.lstb_listbox_modes.bind('<<ListboxSelect>>', self.callback_listbox_modes)
+
+    def callback_update_volume(self, *args):
+        ctrl.set_volume_position(self.var_volume_scale.get())
+        self.var_volume_scale_translated.set(maps.volume_positions[int(self.var_volume_scale.get())])
 
     def callback_listbox_modes(self, event):
         if self.input_thread.running:

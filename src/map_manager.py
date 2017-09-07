@@ -21,7 +21,8 @@ def load_mapping(filename):
 
 # Loaded data go here
 tk_color_codes = load_mapping('maps/color_code_mapping.txt')
-midi_notes =  load_mapping('maps/midi_to_note_mapping.txt')
+midi_notes = load_mapping('maps/midi_to_note_mapping.txt')
+scale_notes = load_mapping('maps/note_to_midi_mapping.txt')
 volume_positions =  load_mapping('maps/volume_positions.txt')
 volume_colors = load_mapping('maps/volume_colors.txt')
 pad_notes = load_mapping('maps/pad_notes.txt')
