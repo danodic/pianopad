@@ -5,3 +5,6 @@ Right now this is far from its final state and usage is recomended only for deve
 
 # Usage
 Take a look at the wiki: https://github.com/danodic/pianopad/wiki
+
+# Download
+Release currently at https://github.com/danodic/pianopad/tree/master/builds
