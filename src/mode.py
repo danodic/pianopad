@@ -345,4 +345,4 @@ class Mode:
 
         # fill the root notes
         for i in range((int( len(self.notes) / int(self.properties['octave size'] ))) + 2):
-            self.root_notes[(int(self.properties['octave size'])*i+self.current_root_note) + first_c] = 1
+            self.root_notes[(int(self.properties['octave size'])*i) + first_c] = 1

@@ -5,7 +5,10 @@ os.environ['TCL_LIBRARY'] = "C:\\Users\\danilo\\AppData\\Local\\Programs\\Python
 os.environ['TK_LIBRARY'] = "C:\\Users\\danilo\\AppData\\Local\\Programs\\Python\\Python36-32\\tcl\\tk8.6"
 
 include_files=["C:\\Users\\danilo\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\tcl86t.dll",
-               "C:\\Users\\danilo\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\tk86t.dll"]
+               "C:\\Users\\danilo\\AppData\\Local\\Programs\\Python\\Python36-32\\DLLs\\tk86t.dll",
+               ".\\modes",
+               ".\\keyboard",
+               ".\\maps"]
 
 base = None
 
@@ -26,5 +29,5 @@ setup (
     version = "0.1",
     description = "El perro, el perro, is mi corazon...",
     options = {"build_exe": build_exe_options},
-    executables = [Executable("main.py", base=base)]
+    executables = [Executable("pianopad.py", base=base)]
 )

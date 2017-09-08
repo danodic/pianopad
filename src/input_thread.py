@@ -85,8 +85,10 @@ class InputThread (threading.Thread):
                     
                     if data['velocity'] == 127:
                         mom.current_mode.play_note(data['note'], ctrl.current_volume, self.midiout_external, self.midiout_launchpad)
+                        self.ui.highlight_button(data['note'])
                     else:
                         mom.current_mode.release_note(data['note'], self.midiout_external, self.midiout_launchpad)
+                        self.ui.release_button(data['note'])
 
                 # Panel keys
                 elif data['type'] == 'control_change' and data['control'] in self.function_keys:

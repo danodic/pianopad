@@ -209,10 +209,25 @@ class MainWindow(tk.Frame):
 
         for key_row, color_row, note_row in zip(self.all_keys, reversed(colors), reversed(playfield)):
             for key, color, note in zip(key_row, color_row, note_row): 
+                actual_note = max(min(note + mom.current_mode.current_root_note, 127), -1)
                 key['bg'] = maps.tk_color_codes[color]
-                key['text'] = maps.midi_notes[note]
-                key['text'] = maps.midi_notes[note]
+                key['text'] = maps.midi_notes[actual_note]
+                key['text'] = maps.midi_notes[actual_note]
     
+    def highlight_button(self, note):
+        row = 8 - int(note/10)
+        column = note%10 -1
+        
+        self.all_keys[row][column]['bg'] = 'white'
+
+    def release_button(self, note):
+        row = 8 - int(note/10)
+        column = note%10 -1
+
+        colors = mom.current_mode.background
+        
+        self.all_keys[row][column]['bg'] = maps.tk_color_codes[colors[row][column]]
+
     def update_volume(self):
         self.var_volume_scale.set(ctrl.current_volume_pos)
         self.var_volume_scale_translated.set(maps.volume_positions[int(self.var_volume_scale.get())])
