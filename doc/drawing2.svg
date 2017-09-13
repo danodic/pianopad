@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.91 r13725"
-   sodipodi:docname="drawing.svg">
+   sodipodi:docname="drawing2.svg">
   <defs
      id="defs4">
     <marker
@@ -1529,38 +1529,8 @@
        inkscape:connector-curvature="0" />
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 21.427478,280.97299 347.125152,0 0,-192.84731"
-       id="path4841"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 22.85605,352.39791 345.69666,0 0,-72.85342"
-       id="path4843"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 21.427478,423.82284 84.281412,0 0,59.99694"
-       id="path4845"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
        d="m 715.67778,118.12415 -282.84272,0 0,-29.99847"
        id="path4851"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 714.24928,170.9786 -214.27479,0 0,-84.281418"
-       id="path4853"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 714.24928,240.97503 -44.28346,0 0,-85.70992 -39.99796,0"
-       id="path4855"
-       inkscape:connector-curvature="0" />
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 714.24928,313.82845 -44.28346,0 0,39.99796 -37.14096,0"
-       id="path4857"
        inkscape:connector-curvature="0" />
     <g
        id="g4512"
@@ -1609,118 +1579,6 @@
            id="tspan4526">PREVIOUS MODE</tspan></text>
     </g>
     <g
-       id="g4480-7"
-       transform="translate(-105.56666,289.88259)">
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         y="-39.010693"
-         x="-79.28167"
-         height="59.996941"
-         width="207.13229"
-         id="rect3568-1-0" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3562-6-4"
-         y="-14.726218"
-         x="23.710913"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           id="tspan3566-8-4"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="-14.726218"
-           x="23.710913"
-           sodipodi:role="line">TAP: CYCLE THROUGH</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="7.1487818"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4581">MODES AVAILABLE</tspan></text>
-    </g>
-    <g
-       id="g4480-7-5"
-       transform="translate(-105.56666,362.64103)">
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         y="-39.010693"
-         x="-79.28167"
-         height="59.996941"
-         width="207.13229"
-         id="rect3568-1-0-2" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3562-6-4-1"
-         y="-14.726218"
-         x="23.710913"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="-14.726218"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4581-9">HOLD: MODE</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="7.1487818"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4636">SELECTION</tspan></text>
-    </g>
-    <g
-       id="g4480-7-5-0"
-       transform="translate(-105.56666,435.39942)">
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         y="-39.010693"
-         x="-79.28167"
-         height="59.996941"
-         width="207.13229"
-         id="rect3568-1-0-2-4" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3562-6-4-1-0"
-         y="-14.726218"
-         x="23.710913"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="-14.726218"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4636-3">FIRST NOTE OF</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="7.1487818"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4811">THE OCTAVE</tspan></text>
-    </g>
-    <g
-       id="g4486"
-       transform="translate(10.14121,-268)">
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         y="552.3877"
-         x="704.96405"
-         height="59.996941"
-         width="207.13229"
-         id="rect3568-1-1" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3562-6-3"
-         y="576.67218"
-         x="807.9566"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           id="tspan3566-8-3"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="576.67218"
-           x="807.9566"
-           sodipodi:role="line">LIGHT OFF MEANS</tspan><tspan
-           id="tspan4472"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="598.54718"
-           x="807.9566"
-           sodipodi:role="line">NO FUNCTION</tspan></text>
-    </g>
-    <g
        id="g4480-7-5-4"
        transform="translate(794.38693,105.12617)">
       <rect
@@ -1741,68 +1599,12 @@
            y="-14.726218"
            x="23.710913"
            sodipodi:role="line"
-           id="tspan4636-7">SWITCH TO FAVORITE</tspan><tspan
+           id="tspan4722">HOLD: ACTIVATE</tspan><tspan
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
            y="7.1487818"
            x="23.710913"
            sodipodi:role="line"
-           id="tspan4722">MODE 1</tspan></text>
-    </g>
-    <g
-       id="g4480-7-5-4-7"
-       transform="translate(794.38693,176.83659)">
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         y="-39.010693"
-         x="-79.28167"
-         height="59.996941"
-         width="207.13229"
-         id="rect3568-1-0-2-8-3" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3562-6-4-1-9-7"
-         y="-14.726218"
-         x="23.710913"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="-14.726218"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4636-7-1">SWITCH TO FAVORITE</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="7.1487818"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4722-2">MODE 2</tspan></text>
-    </g>
-    <g
-       id="g4480-7-5-2"
-       transform="translate(794.38693,249.69002)">
-      <rect
-         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
-         y="-39.010693"
-         x="-79.28167"
-         height="59.996941"
-         width="207.13229"
-         id="rect3568-1-0-2-1" />
-      <text
-         sodipodi:linespacing="125%"
-         id="text3562-6-4-1-5"
-         y="-14.726218"
-         x="23.710913"
-         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="-14.726218"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4636-9">HOLD: VOLUME</tspan><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
-           y="7.1487818"
-           x="23.710913"
-           sodipodi:role="line"
-           id="tspan4780">SELECTION</tspan></text>
+           id="tspan4864">FAVORITE MODE 1</tspan></text>
     </g>
     <circle
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -1871,7 +1673,7 @@
        cy="88.122108"
        r="24.284475" />
     <circle
-       style="fill:#ff0000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#0000ff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path5612-9-6"
        cx="433.06049"
        cy="86.408119"
@@ -1883,19 +1685,13 @@
        cy="88.122108"
        r="24.284475" />
     <circle
-       style="fill:#0000ff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="path5612-9-44"
-       cx="498.44775"
-       cy="86.408119"
-       r="24.284475" />
-    <circle
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path5612-72"
        cx="565.86218"
        cy="88.122108"
        r="24.284475" />
     <circle
-       style="fill:#00ff00;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path5612-9-58"
        cx="563.83508"
        cy="86.408119"
@@ -1907,7 +1703,7 @@
        cy="156.69362"
        r="24.284475" />
     <circle
-       style="fill:#ff6600;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path5612-9"
        cx="632.53882"
        cy="154.97963"
@@ -1996,5 +1792,61 @@
        cx="632.53882"
        cy="615.81317"
        r="24.284475" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
+       d="m 714.24928,170.9786 -214.27479,0 0,-84.281418"
+       id="path4853"
+       inkscape:connector-curvature="0" />
+    <circle
+       style="fill:#0000ff;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path5612-9-44"
+       cx="498.44775"
+       cy="86.408119"
+       r="24.284475" />
+    <g
+       id="g4480-7-5-4-7"
+       transform="translate(794.38693,176.83659)">
+      <rect
+         style="fill:#ffffff;stroke:#000000;stroke-opacity:1"
+         y="-39.010693"
+         x="-79.28167"
+         height="59.996941"
+         width="207.13229"
+         id="rect3568-1-0-2-8-3" />
+      <text
+         sodipodi:linespacing="125%"
+         id="text3562-6-4-1-9-7"
+         y="-14.726218"
+         x="23.710913"
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
+           y="-14.726218"
+           x="23.710913"
+           sodipodi:role="line"
+           id="tspan4722-2">HOLD: ACTIVATE</tspan><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';text-align:center;text-anchor:middle"
+           y="7.1487818"
+           x="23.710913"
+           sodipodi:role="line"
+           id="tspan4868">FAVORITE MODE 2</tspan></text>
+    </g>
+    <path
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 360.90153,51.994937 0,30.627517 -8.66895,0 16.0306,16.031406 16.03141,-16.031406 -8.66895,0 0,-30.627517 -14.72411,0 z"
+       id="rect4874"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="381.26425"
+       y="57.756435"
+       id="text4882"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4884"
+         x="381.26425"
+         y="57.756435"
+         style="font-size:12.5px">HOLD</tspan></text>
   </g>
 </svg>
