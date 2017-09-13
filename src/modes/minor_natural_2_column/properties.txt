@@ -1,4 +1,4 @@
-name: Major Scale - 2 Columns
+name: Minor Scale (natural) - 2 Columns
 layout: 2 columns
 default row: 1
 octave size: 7

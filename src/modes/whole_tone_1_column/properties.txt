@@ -1,0 +1,5 @@
+name: Whole Tone - 1 Column
+layout: 1 column
+default row: 0
+octave size: 6
+padding: 2

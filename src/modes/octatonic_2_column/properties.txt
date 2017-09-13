@@ -1,0 +1,5 @@
+name: Octatonic - 2 Columns
+layout: 2 columns
+default row: 2
+octave size: 8
+padding: 0

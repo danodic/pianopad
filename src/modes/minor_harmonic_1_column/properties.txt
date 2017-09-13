@@ -1,4 +1,4 @@
-name: Major Scale - 1 Column
+name: Minor (harmonic) - 1 Column
 layout: 1 column
 default row: 1
 octave size: 7

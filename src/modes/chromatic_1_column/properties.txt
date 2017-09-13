@@ -1,4 +1,5 @@
 name: Chromatic Scale - 1 Column
 layout: 1 column
-default row: 7
+default row: 4
 octave size: 12
+padding: 4

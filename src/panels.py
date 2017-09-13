@@ -51,7 +51,9 @@ def main_screen_panel():
 
 def main_screen_side_panel():
 
-    return [volume_key(), None, None, None, None, None, None, None]
+    record_arm = [40, 40, 40]
+
+    return [volume_key(), None, None, None, None, None, None, record_arm]
 
 def volume_key_panel():
 
@@ -118,6 +120,28 @@ def mode_selection_panel():
         user2_button = [0, 0, 63]
 
     return [None, None, left_button, right_button, session_button, user1_button, user2_button, None]
+
+def shift_main_panel():
+
+    session_button = [63, 63, 63]
+
+    if mom.current_mode.padding > 0:
+        left_button = [0,63,0]
+    else:
+        left_button = [63,0,0]
+
+    if mom.current_mode.padding < 8:
+        right_button = [0,63,0]
+    else:
+        right_button = [63,0,0]
+
+    return [None, None, left_button, right_button, None, None, None, None]
+
+def shift_main_side():
+
+    record_arm = [63, 25, 0]
+
+    return [None, None, None, None, None, None, None, record_arm]
 
 def volume_key():
 

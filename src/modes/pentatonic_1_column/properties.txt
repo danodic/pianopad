@@ -1,0 +1,5 @@
+name: Pentatonic - 1 Column
+layout: 1 column
+default row: 0
+octave size: 5
+padding: 7

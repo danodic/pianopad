@@ -1,0 +1,5 @@
+name: Blues - 1 Column
+layout: 1 column
+default row: 3
+octave size: 10
+padding: 6

@@ -39,7 +39,7 @@ class InputThread (threading.Thread):
         self.running = False
 
         # Defines the function keys
-        self.function_keys = [89,104, 105, 106, 107, 108, 109, 110, 111]
+        self.function_keys = [19, 89, 104, 105, 106, 107, 108, 109, 110, 111]
 
         # Defines the current screen
         self.current_screen = 'main'
@@ -85,10 +85,9 @@ class InputThread (threading.Thread):
                     
                     if data['velocity'] == 127:
                         mom.current_mode.play_note(data['note'], ctrl.current_volume, self.midiout_external, self.midiout_launchpad)
-                        self.ui.highlight_button(data['note'])
+                    
                     else:
                         mom.current_mode.release_note(data['note'], self.midiout_external, self.midiout_launchpad)
-                        self.ui.release_button(data['note'])
 
                 # Panel keys
                 elif data['type'] == 'control_change' and data['control'] in self.function_keys:
@@ -151,6 +150,10 @@ class InputThread (threading.Thread):
                     # Volume
                     if data['note'] == 89 and data['type'] == 'note_on':
                         self.volume_key()
+
+                    # Shift
+                    if data['note'] == 19 and data['type'] == 'note_on':
+                        self.shift_key()
 
                     # Light up the panel after coming from another screen
                     self.light_upper_panel(panels.main_screen_panel())
@@ -339,6 +342,46 @@ class InputThread (threading.Thread):
                     
                     if data['control'] == 111 and data['value'] == 127:
                         break
+
+            time.sleep(self.default_timeout)
+
+        mom.current_mode.refresh_background(self.midiout_launchpad)
+
+    def shift_key(self):
+
+        # Light the panel
+        self.light_upper_panel(panels.shift_main_panel())
+        self.light_right_panel(panels.shift_main_side())
+
+        while self.keep_running:
+           
+            # Get the message
+            message = self.midiin.poll()
+            
+            if message:
+
+                # Organize the values
+                data = message.dict()
+
+                # Leave shift mode
+                if data['type'] in ['note_on'] and data['note'] == 19:
+
+                    if data['velocity'] == 00:
+                        return
+
+                # Slide <
+                elif data['type'] == 'control_change' and data['control'] == 106 and data['value'] == 127:
+                    mom.current_mode.slide_left()
+                    mom.current_mode.refresh_background(self.midiout_launchpad)
+                    self.ui.color_buttons()
+                    self.light_upper_panel(panels.shift_main_panel())
+
+                # Slide >
+                elif data['type'] == 'control_change' and data['control'] == 107 and data['value'] == 127:
+                    mom.current_mode.slide_right()
+                    mom.current_mode.refresh_background(self.midiout_launchpad)
+                    self.ui.color_buttons()
+                    self.light_upper_panel(panels.shift_main_panel())
 
             time.sleep(self.default_timeout)
 
