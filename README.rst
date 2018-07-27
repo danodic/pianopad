@@ -10,6 +10,8 @@ Right now this is far from its final state and usage is recomended only for deve
 
 A better demo video would also be nice, maybe someone doing some *real* music using it? :)
 
+Also, discord room here: https://discord.gg/Q96xVF
+
 Usage, Installation, etc.
 -------------------------
 Take a look at the wiki: https://github.com/danodic/pianopad/wiki
