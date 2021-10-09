@@ -197,11 +197,18 @@ class MainWindow(tk.Frame):
             mom.set_mode(self.input_thread.midiout_launchpad, index)
             self.color_buttons()
 
+    def setup_launchpad(self):
+        ip = self.var_lp_input.get()
+        op = self.var_lp_output.get()
+        if 'Select One' in (ip, op):
+            return
+        self.input_thread.open_launchpad(ip, op)
+
     def callback_lp_input(self, *args):
-        self.input_thread.midiin = mm.get_input_port(self.var_lp_input.get())
+        self.setup_launchpad()
     
     def callback_lp_output(self, *args):
-        self.input_thread.midiout_launchpad = mm.get_output_port(self.var_lp_output.get())
+        self.setup_launchpad()
 
     def callback_ext_output(self, *args):
         self.input_thread.midiout_external = mm.get_output_port(self.var_ext_output.get())

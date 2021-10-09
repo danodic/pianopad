@@ -7,6 +7,7 @@ import keyboard
 import keyboard_manager
 import mode_manager as mom
 import controller as ctrl
+import launchpad
 
 from map_manager import pad_notes
 from keyboard_manager import key_mapping
@@ -18,7 +19,7 @@ class InputThread (threading.Thread):
     
     """
 
-    def __init__(self, midiin = None, midiout_launchpad = None, midiout_external = None):
+    def __init__(self, midiout_external = None):
         """
         TODO
         """
@@ -32,9 +33,9 @@ class InputThread (threading.Thread):
         threading.Thread.__init__(self)
 
         # Store some variables
-        self.midiin = midiin
+        self.launchpad = None
         self.midiout_external = midiout_external
-        self.midiout_launchpad = midiout_launchpad
+        self.midiout_launchpad = None
         self.keep_running = True
         self.running = False
 
@@ -57,8 +58,12 @@ class InputThread (threading.Thread):
         self.screen_main()
 
     def wait_for_midi_devices(self):
-        while (self.midiin is None or self.midiout_external is None or self.midiout_launchpad is None) and self.keep_running:
+        while (self.launchpad is None or self.midiout_external is None) and self.keep_running:
             time.sleep(self.default_timeout)
+
+    def open_launchpad(self, input_name, output_name):
+        self.launchpad = launchpad.create(input_name, output_name)
+        self.midiout_launchpad = self.launchpad.midiout
 
     def screen_main(self):
         """
@@ -73,7 +78,7 @@ class InputThread (threading.Thread):
         while self.keep_running:
            
             # Get the message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
             
             if message:
 
@@ -177,7 +182,7 @@ class InputThread (threading.Thread):
         while True:
 
             # Poll message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
             
             # Do Stuff in case of message
             if message:
@@ -255,7 +260,7 @@ class InputThread (threading.Thread):
         while True:
 
             # Poll message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
             
             # Do Stuff in case of message
             if message:
@@ -321,7 +326,7 @@ class InputThread (threading.Thread):
         while self.keep_running:
            
             # Get the message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
             
             if message:
 
@@ -356,7 +361,7 @@ class InputThread (threading.Thread):
         while self.keep_running:
            
             # Get the message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
             
             if message:
 
@@ -396,7 +401,7 @@ class InputThread (threading.Thread):
         while True:
             
             # Poll message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
 
             if message:
 
@@ -420,7 +425,7 @@ class InputThread (threading.Thread):
         while True:
 
             # Poll message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
 
             if message:
 
@@ -470,7 +475,7 @@ class InputThread (threading.Thread):
         while True:
         
             # Poll message
-            message = self.midiin.poll()
+            message = self.launchpad.poll()
             
             # Check if time elapsed
             if (time.time() - start_time) >= 3:
@@ -485,4 +490,4 @@ class InputThread (threading.Thread):
                 if data['type'] == 'control_change' and data['control'] == note and data['value'] == 0:
                     return False
 
-        time.sleep(self.default_timeout)   
+        time.sleep(self.default_timeout)
