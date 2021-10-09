@@ -115,6 +115,9 @@ class MainWindow(tk.Frame):
 
     def position_widgets(self):
 
+        # Button matrix
+        self.frame_mapping.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5, side=tk.LEFT)
+
         # Midi Frame
         self.frame_midi.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5)
         self.label_lp_input.pack(fill=tk.X, padx=5, pady=2)
@@ -158,8 +161,6 @@ class MainWindow(tk.Frame):
         self.label_user2_volume.pack(padx=5, pady=2, side=tk.LEFT)
         self.label_user2_volume_var.pack(padx=5, pady=2, side=tk.LEFT)
 
-        # Button matrix
-        self.frame_mapping.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5)
 
     def setup_widgets(self):
         self.color_buttons()
