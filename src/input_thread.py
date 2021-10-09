@@ -251,7 +251,7 @@ class InputThread (threading.Thread):
         # the volume. This will gradually fill the meeter.
 
         # Display the volume meeter
-        ctrl.display_volume_meeter(self.midiout_launchpad)
+        ctrl.display_volume_meeter(self.launchpad)
 
         # Light the upper panel
         self.light_upper_panel(panels.volume_key_panel())
@@ -274,7 +274,7 @@ class InputThread (threading.Thread):
 
                 if data['type'] == 'note_on' and data['note'] in pad_notes:
                     ctrl.set_volume(data['note'])
-                    ctrl.display_volume_meeter(self.midiout_launchpad)
+                    ctrl.display_volume_meeter(self.launchpad)
                     self.light_right_panel(panels.volume_side_panel())
                     self.ui.update_volume()
 
@@ -291,13 +291,13 @@ class InputThread (threading.Thread):
 
                     if self.check_hold(109):
                         ctrl.favorites[0] = ctrl.current_volume_pos
-                        ctrl.display_volume_meeter(self.midiout_launchpad)
+                        ctrl.display_volume_meeter(self.launchpad)
                         self.ui.update_user_1_volume()
                         self.light_upper_panel(panels.volume_key_panel())
 
                     elif ctrl.favorites[0] != None:
                         ctrl.current_volume_pos = ctrl.favorites[0]
-                        ctrl.display_volume_meeter(self.midiout_launchpad)
+                        ctrl.display_volume_meeter(self.launchpad)
                         self.ui.update_volume()
 
                 # Hold User 2
@@ -305,13 +305,13 @@ class InputThread (threading.Thread):
                     
                     if self.check_hold(110):
                         ctrl.favorites[1] = ctrl.current_volume_pos
-                        ctrl.display_volume_meeter(self.midiout_launchpad)
+                        ctrl.display_volume_meeter(self.launchpad)
                         self.ui.update_user_2_volume()
                         self.light_upper_panel(panels.volume_key_panel())
 
                     elif ctrl.favorites[1] != None:
                         ctrl.current_volume_pos = ctrl.favorites[1]
-                        ctrl.display_volume_meeter(self.midiout_launchpad)
+                        ctrl.display_volume_meeter(self.launchpad)
                         self.ui.update_volume()
 
                 # Light the upper panel
@@ -321,7 +321,7 @@ class InputThread (threading.Thread):
 
     def mixer_key(self):
 
-        keyboard_manager.refresh_background(self.midiout_launchpad)
+        keyboard_manager.refresh_background(self.launchpad)
 
         while self.keep_running:
            
@@ -411,7 +411,7 @@ class InputThread (threading.Thread):
                     break
 
             if ctrl.increase_volume():
-                ctrl.display_volume_meeter(self.midiout_launchpad)
+                ctrl.display_volume_meeter(self.launchpad)
                 self.light_right_panel(panels.volume_side_panel())
                 self.ui.update_volume()
 
@@ -435,7 +435,7 @@ class InputThread (threading.Thread):
                     break
 
             if ctrl.decrease_volume():
-                ctrl.display_volume_meeter(self.midiout_launchpad)
+                ctrl.display_volume_meeter(self.launchpad)
                 self.light_right_panel(panels.volume_side_panel())
                 self.ui.update_volume()
 

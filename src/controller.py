@@ -31,17 +31,17 @@ def decrease_volume():
 
     return not current_volume_pos == old_volume
 
-def display_volume_meeter(midiout):
+def display_volume_meeter(launchpad):
 
     for note, index in zip(maps.pad_notes[0:current_volume_pos+1], range(current_volume_pos+1)):
 
         # Send the message
-        t.light_on_color_code(midiout, note, maps.volume_colors[index])
+        t.light_on_color_code(launchpad.midiout, note, maps.volume_colors[index])
 
     for note, index in zip(maps.pad_notes[current_volume_pos+1:], range(current_volume_pos+1, 64)):
 
         # Send the message
-        t.light_on_color_code(midiout, note, 0)
+        t.light_on_color_code(launchpad.midiout, note, 0)
 
 def set_volume(note):
     global current_volume
