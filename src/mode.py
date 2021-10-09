@@ -103,16 +103,13 @@ class Mode:
         """
 
         # Load the notes file
-        file_contents = open(mode_folder_name + os.sep + 'notes.txt').read()
-
-        # Build the array
-        file_array = file_contents.split('\n')
+        file_contents = open(mode_folder_name + os.sep + 'notes.txt').readlines()
 
         # Initialize the notes array
         self.notes = []
 
         # Organizes the array
-        for row in reversed(file_array):
+        for row in reversed(file_contents):
             self.notes += row.split(",")
 
         # Convert everything to int
@@ -123,17 +120,14 @@ class Mode:
         Will load the colors file and store into a list.
         """
 
-        # Load the notes file
-        file_contents = open(mode_folder_name + os.sep + 'colors.txt').read()
-
-        # Build the array
-        file_array = file_contents.split('\n')
+        # Load the colors file
+        file_contents = open(mode_folder_name + os.sep + 'colors.txt').readlines()
 
         # Initialize the notes array
         self.colors = []
 
         # Organizes the array
-        for row in reversed(file_array):
+        for row in reversed(file_contents):
             self.colors += row.split(",")
 
         # Convert everything to int
