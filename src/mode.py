@@ -369,7 +369,7 @@ class Mode:
 
         return self.background[row][column]
 
-    def refresh_background(self, midiout):
+    def refresh_background(self, launchpad):
 
         # Go over the screen array and draw it
         for row in range(8):
@@ -379,7 +379,7 @@ class Mode:
                 to_note = ((row+1) * 10) + (column+1)
 
                 # Send the message
-                t.light_on_color_code(midiout, to_note, self.background[row][column])
+                t.light_on_color_code(launchpad.midiout, to_note, self.background[row][column])
     
     def refresh_root_notes(self, notes):
 

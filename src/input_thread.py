@@ -73,7 +73,7 @@ class InputThread (threading.Thread):
         self.light_upper_panel(panels.main_screen_panel())
         self.light_right_panel(panels.main_screen_side_panel())
 
-        mom.current_mode.refresh_background(self.midiout_launchpad)
+        mom.current_mode.refresh_background(self.launchpad)
 
         while self.keep_running:
            
@@ -100,25 +100,25 @@ class InputThread (threading.Thread):
                     # ^
                     if data['control'] == 104 and data['value'] == 127:
                         mom.current_mode.move_up()
-                        mom.current_mode.refresh_background(self.midiout_launchpad)
+                        mom.current_mode.refresh_background(self.launchpad)
                         self.ui.color_buttons()
                     
                     # v
                     elif data['control'] == 105 and data['value'] == 127:
                         mom.current_mode.move_down()
-                        mom.current_mode.refresh_background(self.midiout_launchpad)
+                        mom.current_mode.refresh_background(self.launchpad)
                         self.ui.color_buttons()
                     
                     # <
                     elif data['control'] == 106 and data['value'] == 127:
                         mom.current_mode.root_note_down()
-                        mom.current_mode.refresh_background(self.midiout_launchpad)
+                        mom.current_mode.refresh_background(self.launchpad)
                         self.ui.color_buttons()
 
                     # >
                     elif data['control'] == 107 and data['value'] == 127:
                         mom.current_mode.root_note_up()
-                        mom.current_mode.refresh_background(self.midiout_launchpad)
+                        mom.current_mode.refresh_background(self.launchpad)
                         self.ui.color_buttons()
 
                     # Session
@@ -130,14 +130,14 @@ class InputThread (threading.Thread):
                     # User 1
                     elif data['control'] == 109 and data['value'] == 127:
                         if mom.favorites[0] != None:
-                            mom.set_mode(self.midiout_launchpad, mom.favorites[0])
+                            mom.set_mode(self.launchpad, mom.favorites[0])
                             self.ui.update_current_mode_name()
                             self.ui.update_listbox()
 
                     # User 2
                     elif data['control'] == 110 and data['value'] == 127:
                         if mom.favorites[1] != None:
-                            mom.set_mode(self.midiout_launchpad, mom.favorites[1])
+                            mom.set_mode(self.launchpad, mom.favorites[1])
                             self.ui.update_current_mode_name()
                             self.ui.update_listbox()
 
@@ -194,7 +194,7 @@ class InputThread (threading.Thread):
 
                     # Tap
                     if not key_pressed:
-                        mom.cycle_mode(self.midiout_launchpad)
+                        mom.cycle_mode(self.launchpad)
                         self.ui.update_listbox()
                         break
 
@@ -203,7 +203,7 @@ class InputThread (threading.Thread):
 
                 # Hold + <: Move to the previous mode
                 elif data['type'] == 'control_change' and data['control'] == 106 and data['value'] == 127:
-                    mom.previous_mode(self.midiout_launchpad)
+                    mom.previous_mode(self.launchpad)
                     key_pressed = True
 
                     # Update panel
@@ -212,7 +212,7 @@ class InputThread (threading.Thread):
 
                 # Hold + >: Move to the next mode
                 elif data['type'] == 'control_change' and data['control'] == 107 and data['value'] == 127:
-                    mom.next_mode(self.midiout_launchpad)
+                    mom.next_mode(self.launchpad)
                     key_pressed = True
 
                     # Update panel
@@ -269,7 +269,7 @@ class InputThread (threading.Thread):
 
                 # Loop deactivation
                 if data['type'] == 'note_on' and data['note'] == 89 and data['velocity'] == 0:
-                    mom.current_mode.refresh_background(self.midiout_launchpad)
+                    mom.current_mode.refresh_background(self.launchpad)
                     break
 
                 if data['type'] == 'note_on' and data['note'] in pad_notes:
@@ -350,7 +350,7 @@ class InputThread (threading.Thread):
 
             time.sleep(self.default_timeout)
 
-        mom.current_mode.refresh_background(self.midiout_launchpad)
+        mom.current_mode.refresh_background(self.launchpad)
 
     def shift_key(self):
 
@@ -377,20 +377,20 @@ class InputThread (threading.Thread):
                 # Slide <
                 elif data['type'] == 'control_change' and data['control'] == 106 and data['value'] == 127:
                     mom.current_mode.slide_left()
-                    mom.current_mode.refresh_background(self.midiout_launchpad)
+                    mom.current_mode.refresh_background(self.launchpad)
                     self.ui.color_buttons()
                     self.light_upper_panel(panels.shift_main_panel())
 
                 # Slide >
                 elif data['type'] == 'control_change' and data['control'] == 107 and data['value'] == 127:
                     mom.current_mode.slide_right()
-                    mom.current_mode.refresh_background(self.midiout_launchpad)
+                    mom.current_mode.refresh_background(self.launchpad)
                     self.ui.color_buttons()
                     self.light_upper_panel(panels.shift_main_panel())
 
             time.sleep(self.default_timeout)
 
-        mom.current_mode.refresh_background(self.midiout_launchpad)
+        mom.current_mode.refresh_background(self.launchpad)
 
     def increase_volume(self):
 

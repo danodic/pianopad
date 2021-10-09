@@ -20,7 +20,7 @@ current_mode_position = 0
 current_mode = modes[current_mode_position]
 favorites = [None, None]
 
-def cycle_mode(midiout):
+def cycle_mode(launchpad):
     global current_mode_position
     global current_mode
 
@@ -29,34 +29,34 @@ def cycle_mode(midiout):
     if current_mode_position >= len(modes):
         current_mode_position = 0
 
-    modes[current_mode_position].refresh_background(midiout)
+    modes[current_mode_position].refresh_background(launchpad)
 
     current_mode = modes[current_mode_position]
 
-def next_mode(midiout):
+def next_mode(launchpad):
     global current_mode_position
     global current_mode
 
     if current_mode_position < len(modes)-1:
         current_mode_position += 1
-        modes[current_mode_position].refresh_background(midiout)
+        modes[current_mode_position].refresh_background(launchpad)
 
         current_mode = modes[current_mode_position]
 
-def previous_mode(midiout):
+def previous_mode(launchpad):
     global current_mode_position
     global current_mode
 
     if current_mode_position > 0:
         current_mode_position -= 1
-        modes[current_mode_position].refresh_background(midiout)
+        modes[current_mode_position].refresh_background(launchpad)
 
         current_mode = modes[current_mode_position]
 
-def set_mode(midiout, mode):
+def set_mode(launchpad, mode):
     global current_mode_position
     global current_mode
 
     current_mode_position = mode
-    modes[current_mode_position].refresh_background(midiout)
+    modes[current_mode_position].refresh_background(launchpad)
     current_mode = modes[current_mode_position]

@@ -194,7 +194,7 @@ class MainWindow(tk.Frame):
     def callback_listbox_modes(self, event):
         if self.input_thread.running:
             index = int(event.widget.curselection()[0])
-            mom.set_mode(self.input_thread.midiout_launchpad, index)
+            mom.set_mode(self.input_thread.launchpad, index)
             self.color_buttons()
 
     def setup_launchpad(self):
