@@ -15,7 +15,7 @@ def load_mapping(filename):
     """
 
     with open(filename) as file:
-        content = yaml.load(file.read())
+        content = yaml.safe_load(file.read())
 
     return content
 
