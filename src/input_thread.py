@@ -146,14 +146,14 @@ class InputThread (threading.Thread):
                     self.light_right_panel(panels.main_screen_side_panel())
 
                 # Side keys
-                elif data['type'] == 'note_on' and data['note'] in self.launchpad.function_keys:
+                elif data['type'] == 'note_on' and data['note'] in self.launchpad.side_keys:
                     
                     # Volume
-                    if data['note'] == 89 and data['type'] == 'note_on':
+                    if data['note'] == self.launchpad.side_keys[0]:
                         self.volume_key()
 
                     # Shift
-                    if data['note'] == 19 and data['type'] == 'note_on':
+                    elif data['note'] == self.launchpad.side_keys[-1]:
                         self.shift_key()
 
                     # Light up the panel after coming from another screen
@@ -264,7 +264,7 @@ class InputThread (threading.Thread):
                 data = message.dict()
 
                 # Loop deactivation
-                if data['type'] == 'note_on' and data['note'] == 89 and data['velocity'] == 0:
+                if data['type'] == 'note_on' and data['note'] == self.launchpad.side_keys[0] and data['velocity'] == 0:
                     mom.current_mode.refresh_background(self.launchpad)
                     break
 
@@ -365,7 +365,7 @@ class InputThread (threading.Thread):
                 data = message.dict()
 
                 # Leave shift mode
-                if data['type'] in ['note_on'] and data['note'] == 19:
+                if data['type'] in ['note_on'] and data['note'] == self.launchpad.side_keys[-1]:
 
                     if data['velocity'] == 00:
                         return

@@ -26,7 +26,7 @@ class LaunchpadMk2(Launchpad):
     # This is the default sysex header for launchpad MK2
     # It will translate to [F0, 00, 20, 29, 02, 18]
     default_header = [0,32,41,2,24]
-    function_keys = [19, 89, 104, 105, 106, 107, 108, 109, 110, 111]
+    function_keys = [104, 105, 106, 107, 108, 109, 110, 111]
     pad_notes = [ (x//8)*10 + x%8 + 11 for x in range(64) ]
     side_keys = [ 89, 79, 69, 59, 49, 39, 29, 19 ]
 
@@ -52,7 +52,7 @@ class LaunchpadMk2(Launchpad):
 
 
 class LaunchpadMiniMk2(Launchpad):
-    function_keys = [120, 8, 104, 105, 106, 107, 108, 109, 110, 111]
+    function_keys = [104, 105, 106, 107, 108, 109, 110, 111]
     pad_notes = [ (7-(x//8))*16 + x%8 for x in range(64) ]
     side_keys = [ 8, 24, 40, 56, 72, 88, 104, 120 ]
 

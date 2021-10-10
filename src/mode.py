@@ -258,7 +258,7 @@ class Mode:
         t.note_on(midiout_external, actual_note, velocity)
 
         # Send the light note
-        launchpad.light_on(launchpad, note, 63, 63, 63)
+        launchpad.light_on(note, 63, 63, 63)
 
         # Add the note to the release queue
         if note not in self.release_notes:
