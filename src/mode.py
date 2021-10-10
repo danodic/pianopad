@@ -36,7 +36,6 @@ class Mode:
         self.original_colors = None
         self.playfield_size = None
         self.colors = None
-        self.root_notes = None
         self.playfield = []
         self.background = []
         self.root_notes = []
@@ -46,7 +45,8 @@ class Mode:
             'name': None,
             'layout': None,
             'default': None,
-            'octave size': None
+            'octave size': None,
+            'root_notes': True
         }
 
         # Check if we have the files neeedd
@@ -103,16 +103,13 @@ class Mode:
         """
 
         # Load the notes file
-        file_contents = open(mode_folder_name + os.sep + 'notes.txt').read()
-
-        # Build the array
-        file_array = file_contents.split('\n')
+        file_contents = open(mode_folder_name + os.sep + 'notes.txt').readlines()
 
         # Initialize the notes array
         self.notes = []
 
         # Organizes the array
-        for row in reversed(file_array):
+        for row in reversed(file_contents):
             self.notes += row.split(",")
 
         # Convert everything to int
@@ -123,17 +120,14 @@ class Mode:
         Will load the colors file and store into a list.
         """
 
-        # Load the notes file
-        file_contents = open(mode_folder_name + os.sep + 'colors.txt').read()
-
-        # Build the array
-        file_array = file_contents.split('\n')
+        # Load the colors file
+        file_contents = open(mode_folder_name + os.sep + 'colors.txt').readlines()
 
         # Initialize the notes array
         self.colors = []
 
         # Organizes the array
-        for row in reversed(file_array):
+        for row in reversed(file_contents):
             self.colors += row.split(",")
 
         # Convert everything to int
@@ -144,17 +138,25 @@ class Mode:
         Will parse the properties file.
         """
 
-        # Load the notes file
-        file_contents = open(mode_folder_name + os.sep + 'properties.txt').read()
+        # Load the properties file
+        file_contents = open(mode_folder_name + os.sep + 'properties.txt').readlines()
 
         # Parse each option
-        for row in file_contents.split("\n"):
+        for row in file_contents:
             # TODO handle exception
             option_name, option_value = row.split(':')
+            option_name = option_name.strip().lower()
 
             # Store the data
-            if option_name.strip().lower() in ['name', 'layout', 'default row', 'octave size', 'padding']:
-                self.properties[option_name.strip().lower()] = option_value.strip()
+            if option_name in ['name', 'layout', 'default row', 'octave size', 'padding']:
+                self.properties[option_name] = option_value.strip()
+            elif option_name == 'root_notes':
+                if option_value.strip().lower() in ('no', 'false', '0'):
+                    self.properties[option_name] = False
+                elif option_value.strip().lower() in ('yes', 'true', '1'):
+                    self.properties[option_name] = True
+                else:
+                    print('WARNING: unknown value for %s: %s' % (option_name, option_value))
 
     def validate_consistency(self):
         """
@@ -316,7 +318,8 @@ class Mode:
             use_colors = use_colors + ([0] * (64 - len(use_colors)))
 
         # Reset the root notes
-        self.refresh_root_notes(use_notes)
+        if self.properties['root_notes']:
+            self.refresh_root_notes(use_notes)
 
         if self.properties['layout'] == '2 columns':
 
@@ -344,10 +347,11 @@ class Mode:
                 temp_root_notes[row] = self.root_notes[(8*row):(8*row)+8]
 
         # Merge the background and the root notes
-        for row in range(8):
-            for column in range(8):
-                if temp_root_notes[row][column] != 0:
-                    self.background[row][column] = 5
+        if self.properties['root_notes']:
+            for row in range(8):
+                for column in range(8):
+                    if temp_root_notes[row][column] != 0:
+                        self.background[row][column] = 5
 
     def map_note_to_playfield(self, note):
 
