@@ -1,7 +1,6 @@
 import threading
 import time
 
-import translator as t
 import panels
 import keyboard
 import keyboard_manager
@@ -34,7 +33,6 @@ class InputThread (threading.Thread):
         # Store some variables
         self.launchpad = None
         self.midiout_external = midiout_external
-        self.midiout_launchpad = None
         self.keep_running = True
         self.running = False
 
@@ -59,7 +57,6 @@ class InputThread (threading.Thread):
 
     def open_launchpad(self, input_name, output_name):
         self.launchpad = launchpad.create(input_name, output_name)
-        self.midiout_launchpad = self.launchpad.midiout
 
     def screen_main(self):
         """
@@ -391,7 +388,7 @@ class InputThread (threading.Thread):
     def increase_volume(self):
 
         # Light up the ^ button
-        t.light_on(self.midiout_launchpad, 104, 63, 16, 0)
+        self.launchpad.light_on(104, 63, 16, 0)
 
         # Wait for the button to be released
         while True:
@@ -414,7 +411,7 @@ class InputThread (threading.Thread):
             time.sleep(self.volume_change_timeout)
 
         # Light off the ^ button
-        t.light_off(self.midiout_launchpad, 104)
+        self.launchpad.light_off(104)
 
     def decrease_volume(self):
         # Wait for the button to be released
@@ -439,29 +436,29 @@ class InputThread (threading.Thread):
 
     def light_upper_panel(self, lights = [None, None, None, None, None, None, None, None]):
     
-        for light, note in zip(lights, range(104, 112)):
+        for light, note in zip(lights, self.launchpad.function_keys):
             if light is None:
-                t.light_off(self.midiout_launchpad, note)
+                self.launchpad.fn_light_off(note)
 
             else:
                 # Light up the button
-                t.light_on(self.midiout_launchpad, note, light[0], light[1], light[2])
+                self.launchpad.fn_light_on(note, light[0], light[1], light[2])
 
     def light_right_panel(self, lights = [None, None, None, None, None, None, None, None]):
     
-        for light, note in zip(lights, [89, 79, 69, 59, 49, 39, 29, 19]):
+        for light, note in zip(lights, self.launchpad.side_keys):
             if light is None:
-                t.light_off(self.midiout_launchpad, note)
+                self.launchpad.light_off(note)
 
             else:
                 # Light up the button
-                t.light_on(self.midiout_launchpad, note, light[0], light[1], light[2])
+                self.launchpad.light_on(note, light[0], light[1], light[2])
 
 
     def light_panel_button(self, button, color):
          
          # Light up the button
-        t.light_on(self.midiout_launchpad, button, color[0], color[1], color[2])
+        self.launchpad.light_on(button, color[0], color[1], color[2])
 
     def check_hold(self, note):
         

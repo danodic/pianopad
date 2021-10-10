@@ -50,13 +50,18 @@ class LaunchpadMk2(Launchpad):
         message = mido.Message('sysex', data = self.default_header + [14] + [color])
         self.midiout.send(message)
 
+    # the function key light on and off functions don't change for the Mk2
+    fn_light_on = light_on
+    fn_light_off = light_off
+
 
 class LaunchpadMiniMk2(Launchpad):
     function_keys = [104, 105, 106, 107, 108, 109, 110, 111]
     pad_notes = [ (7-(x//8))*16 + x%8 for x in range(64) ]
     side_keys = [ 8, 24, 40, 56, 72, 88, 104, 120 ]
 
-    def light_on_color_code(self, key, color):
+    @staticmethod
+    def _map_color(color):
         # map colors to rg velocity
         if color == 0:
             red=0
@@ -67,16 +72,21 @@ class LaunchpadMiniMk2(Launchpad):
         else:
             red=1
             green=1
-        vel = red+green*16
-        message =  mido.Message('note_on', note=key, velocity = vel)
-        self.midiout.send(message)
+        return red+green*16
 
-    def light_on(self, key, r=63, g=63, b=63):
+    @staticmethod
+    def _map_rgb(r, g, b):
         # map the rgb to a rg color
         red=r//32
         green=max(g,b)//32
-        vel = red+green*16
-        message =  mido.Message('note_on', note=key, velocity = vel)
+        return red+green*16
+
+    def light_on_color_code(self, key, color):
+        message =  mido.Message('note_on', note=key, velocity = self._map_color(color))
+        self.midiout.send(message)
+
+    def light_on(self, key, r=63, g=63, b=63):
+        message =  mido.Message('note_on', note=key, velocity = self._map_rgb(r,g,b))
         self.midiout.send(message)
 
     def light_off(self, key):
@@ -92,3 +102,14 @@ class LaunchpadMiniMk2(Launchpad):
         #message = mido.Message('control_change', value = 0x7d)
         message = mido.Message('control_change', value = 0)
         self.midiout.send(message)
+
+    def fn_light_on(self, key, r=63, g=63, b=63):
+        if key in self.function_keys:
+            message =  mido.Message('control_change', control=key, value=self._map_rgb(r,g,b))
+            self.midiout.send(message)
+
+    def fn_light_off(self, key):
+        # velocity 0 to turn lights off
+        if key in self.function_keys:
+            message =  mido.Message('control_change', control=key, value=0)
+            self.midiout.send(message)
