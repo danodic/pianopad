@@ -1,5 +1,4 @@
 import map_manager as maps
-import translator as t
 
 current_volume = 100
 current_volume_pos = 47
@@ -36,12 +35,12 @@ def display_volume_meeter(launchpad):
     for note, index in zip(maps.pad_notes[0:current_volume_pos+1], range(current_volume_pos+1)):
 
         # Send the message
-        t.light_on_color_code(launchpad.midiout, note, maps.volume_colors[index])
+        launchpad.light_on_color_code(note, maps.volume_colors[index])
 
     for note, index in zip(maps.pad_notes[current_volume_pos+1:], range(current_volume_pos+1, 64)):
 
         # Send the message
-        t.light_on_color_code(launchpad.midiout, note, 0)
+        launchpad.light_on_color_code(note, 0)
 
 def set_volume(note):
     global current_volume

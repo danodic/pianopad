@@ -1,10 +1,17 @@
-
+import mido
 import midi_manager
+import re
+
 
 def create(input_name, output_name):
     midiin = midi_manager.get_input_port(input_name)
     midiout = midi_manager.get_output_port(output_name)
-    return Launchpad(midiin, midiout)
+    # this is possibly an overly simplistic method to detect the device type
+    if re.match('^Launchpad Mini', input_name):
+        return LaunchpadMiniMk2(midiin, midiout)
+    else:
+        return LaunchpadMk2(midiin, midiout)
+
 
 class Launchpad:
     def __init__(self, midiin, midiout):
@@ -13,3 +20,71 @@ class Launchpad:
 
     def poll(self):
         return self.midiin.poll()
+
+
+class LaunchpadMk2(Launchpad):
+    # This is the default sysex header for launchpad MK2
+    # It will translate to [F0, 00, 20, 29, 02, 18]
+    default_header = [0,32,41,2,24]
+    function_keys = [19, 89, 104, 105, 106, 107, 108, 109, 110, 111]
+
+    def light_on_color_code(self, key, color):
+        # 10 = Set leds in color code mode
+        message = mido.Message('sysex', data = self.default_header + [10] + [key, color])
+        self.midiout.send(message)
+
+    def light_on(self, key, r=63, g=63, b=63):
+        # 11 = Set leds in RGB mode
+        message = mido.Message('sysex', data = self.default_header + [11] + [key, r, g, b])
+        self.midiout.send(message)
+
+    def light_off(self, key):
+        # 10 = Set leds in color code mode
+        message = mido.Message('sysex', data = self.default_header + [10] + [key, 0])
+        self.midiout.send(message)
+
+    def light_all(self, color):
+        # 14 = Set all leds
+        message = mido.Message('sysex', data = self.default_header + [14] + [color])
+        self.midiout.send(message)
+
+
+class LaunchpadMiniMk2(Launchpad):
+    function_keys = [120, 8, 104, 105, 106, 107, 108, 109, 110, 111]
+
+    def light_on_color_code(self, key, color):
+        # map colors to rg velocity
+        if color == 0:
+            red=0
+            green=0
+        elif color in (5, 6):
+            red=3
+            green=0
+        else:
+            red=1
+            green=1
+        vel = red+green*16
+        message =  mido.Message('note_on', note=key, velocity = vel)
+        self.midiout.send(message)
+
+    def light_on(self, key, r=63, g=63, b=63):
+        # map the rgb to a rg color
+        red=r//32
+        green=max(g,b)//32
+        vel = red+green*16
+        message =  mido.Message('note_on', note=key, velocity = vel)
+        self.midiout.send(message)
+
+    def light_off(self, key):
+        # velocity 0 to turn lights off
+        message =  mido.Message('note_off', note=key, velocity = 0)
+        self.midiout.send(message)
+
+    def light_all(self, color):
+        # there is no real equivalent for the light_all command with a color
+        # 0x7d, 0x7e, 0x7f set all leds at dim, medium, bright
+        # 0 is reset, which is a bit brutal perhaps
+        print('light_all', color)
+        #message = mido.Message('control_change', value = 0x7d)
+        message = mido.Message('control_change', value = 0)
+        self.midiout.send(message)

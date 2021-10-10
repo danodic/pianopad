@@ -243,7 +243,7 @@ class Mode:
 
         self.refresh_playfield()
 
-    def play_note(self, note, velocity, midiout_external, midiout_launchpad):
+    def play_note(self, note, velocity, midiout_external, launchpad):
         """
 
         """
@@ -258,7 +258,7 @@ class Mode:
         t.note_on(midiout_external, actual_note, velocity)
 
         # Send the light note
-        t.light_on(midiout_launchpad, note, 63, 63, 63)
+        launchpad.light_on(launchpad, note, 63, 63, 63)
 
         # Add the note to the release queue
         if note not in self.release_notes:
@@ -268,7 +268,7 @@ class Mode:
             self.release_notes[note].append(actual_note)
 
 
-    def release_note(self, note, midiout_external, midiout_launchpad):
+    def release_note(self, note, midiout_external, launchpad):
         """
 
         """
@@ -279,7 +279,7 @@ class Mode:
                 t.note_off(midiout_external, to_release)
 
             # Release the light
-            t.light_on_color_code(midiout_launchpad, note, self.map_note_to_colorfield(note))
+            launchpad.light_on_color_code(note, self.map_note_to_colorfield(note))
 
     def refresh_playfield(self):
 
@@ -379,7 +379,7 @@ class Mode:
                 to_note = ((row+1) * 10) + (column+1)
 
                 # Send the message
-                t.light_on_color_code(launchpad.midiout, to_note, self.background[row][column])
+                launchpad.light_on_color_code(to_note, self.background[row][column])
     
     def refresh_root_notes(self, notes):
 

@@ -1,5 +1,4 @@
 import keyboard
-import translator as t
 
 color_map = []
 
@@ -79,7 +78,7 @@ def refresh_background(launchpad):
                 to_note = ((row+1) * 10) + (column+1)
 
                 # Send the message
-                t.light_on_color_code(launchpad.midiout, to_note, color[row][column])
+                launchpad.light_on_color_code(to_note, color[row][column])
 
 load_keyboard_mapping()
 load_color_mapping()

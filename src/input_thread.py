@@ -39,9 +39,6 @@ class InputThread (threading.Thread):
         self.keep_running = True
         self.running = False
 
-        # Defines the function keys
-        self.function_keys = [19, 89, 104, 105, 106, 107, 108, 109, 110, 111]
-
         # Defines the current screen
         self.current_screen = 'main'
         #self.screens = {
@@ -89,13 +86,13 @@ class InputThread (threading.Thread):
                 if data['type'] in ['note_on', 'note_off'] and data['note'] in pad_notes:
                     
                     if data['velocity'] == 127:
-                        mom.current_mode.play_note(data['note'], ctrl.current_volume, self.midiout_external, self.midiout_launchpad)
+                        mom.current_mode.play_note(data['note'], ctrl.current_volume, self.midiout_external, self.launchpad)
                     
                     else:
-                        mom.current_mode.release_note(data['note'], self.midiout_external, self.midiout_launchpad)
+                        mom.current_mode.release_note(data['note'], self.midiout_external, self.launchpad)
 
                 # Panel keys
-                elif data['type'] == 'control_change' and data['control'] in self.function_keys:
+                elif data['type'] == 'control_change' and data['control'] in self.launchpad.function_keys:
                     
                     # ^
                     if data['control'] == 104 and data['value'] == 127:
@@ -150,7 +147,7 @@ class InputThread (threading.Thread):
                     self.light_right_panel(panels.main_screen_side_panel())
 
                 # Side keys
-                elif data['type'] == 'note_on' and data['note'] in self.function_keys:
+                elif data['type'] == 'note_on' and data['note'] in self.launchpad.function_keys:
                     
                     # Volume
                     if data['note'] == 89 and data['type'] == 'note_on':
