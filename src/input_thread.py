@@ -9,7 +9,6 @@ import mode_manager as mom
 import controller as ctrl
 import launchpad
 
-from map_manager import pad_notes
 from keyboard_manager import key_mapping
 from keyboard_manager import press_key, release_key
 
@@ -83,7 +82,7 @@ class InputThread (threading.Thread):
                 data = message.dict()
 
                 # Pad note
-                if data['type'] in ['note_on', 'note_off'] and data['note'] in pad_notes:
+                if data['type'] in ['note_on', 'note_off'] and data['note'] in self.launchpad.pad_notes:
                     
                     if data['velocity'] == 127:
                         mom.current_mode.play_note(data['note'], ctrl.current_volume, self.midiout_external, self.launchpad)
@@ -269,8 +268,8 @@ class InputThread (threading.Thread):
                     mom.current_mode.refresh_background(self.launchpad)
                     break
 
-                if data['type'] == 'note_on' and data['note'] in pad_notes:
-                    ctrl.set_volume(data['note'])
+                if data['type'] == 'note_on' and data['note'] in self.launchpad.pad_notes:
+                    ctrl.set_volume(data['note'], self.launchpad)
                     ctrl.display_volume_meeter(self.launchpad)
                     self.light_right_panel(panels.volume_side_panel())
                     self.ui.update_volume()

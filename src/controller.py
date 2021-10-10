@@ -32,21 +32,21 @@ def decrease_volume():
 
 def display_volume_meeter(launchpad):
 
-    for note, index in zip(maps.pad_notes[0:current_volume_pos+1], range(current_volume_pos+1)):
+    for note, index in zip(launchpad.pad_notes[0:current_volume_pos+1], range(current_volume_pos+1)):
 
         # Send the message
         launchpad.light_on_color_code(note, maps.volume_colors[index])
 
-    for note, index in zip(maps.pad_notes[current_volume_pos+1:], range(current_volume_pos+1, 64)):
+    for note, index in zip(launchpad.pad_notes[current_volume_pos+1:], range(current_volume_pos+1, 64)):
 
         # Send the message
         launchpad.light_on_color_code(note, 0)
 
-def set_volume(note):
+def set_volume(note, launchpad):
     global current_volume
     global current_volume_pos
 
-    note_index = maps.pad_notes.index(note)
+    note_index = launchpad.pad_notes.index(note)
 
     # define the volume
     current_volume_pos = note_index
