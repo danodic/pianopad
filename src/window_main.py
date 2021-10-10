@@ -3,7 +3,7 @@ This is the main window.
 """
 
 import tkinter as tk
-from tkinter import ttk
+from tkinter import ttk, N, W, S, E
 
 import midi_manager as mm
 import mode_manager as mom
@@ -116,7 +116,7 @@ class MainWindow(tk.Frame):
     def position_widgets(self):
 
         # Midi Frame
-        self.frame_midi.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5)
+        self.frame_midi.grid(column=1, row=0, sticky=N+W+E+S)
         self.label_lp_input.pack(fill=tk.X, padx=5, pady=2)
         self.dpw_lp_input.pack(fill=tk.X, padx=5, pady=2)
         self.label_lp_output.pack(fill=tk.X, padx=5, pady=2)
@@ -125,18 +125,19 @@ class MainWindow(tk.Frame):
         self.dpw_ext_output.pack(fill=tk.X, padx=5, pady=2)
 
         # Volume Frame
-        self.frame_volume.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5)
-        self.scale_volume.pack(fill=tk.X, padx=5, pady=2)
-        self.label_volume.pack(padx=5, pady=2, side=tk.LEFT)
-        self.label_volume_var.pack(padx=5, pady=2, side=tk.LEFT)
+        self.frame_volume.grid(column=1, row=1, sticky=W+E)
+        self.scale_volume.grid(column=0, row=0, sticky=W+E)
+        self.frame_volume.columnconfigure(index=0,weight=1)
+        self.label_volume_var.grid(column=1, row=0, sticky=E)
+        self.frame_volume.columnconfigure(index=1,weight=0)
 
         # Modes frame
-        self.frame_modes.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5)
+        self.frame_modes.grid(column=0, row=2, sticky=N+W+E+S)
         self.lstb_listbox_modes.pack(fill=tk.X, expand=1, side=tk.LEFT)
         self.scroll_modes.pack(fill=tk.Y, side=tk.RIGHT)
 
         # Status frame
-        self.frame_status.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5)
+        self.frame_status.grid(column=1, row=2, sticky=N+W+E+S)
 
         self.frame_status_mode.pack(fill=tk.X)
         self.label_current_mode.pack(padx=5, pady=2, side=tk.LEFT)
@@ -159,7 +160,10 @@ class MainWindow(tk.Frame):
         self.label_user2_volume_var.pack(padx=5, pady=2, side=tk.LEFT)
 
         # Button matrix
-        self.frame_mapping.pack(fill=tk.X, padx=5, pady=5, ipadx=5, ipady=5)
+        self.frame_mapping.grid(column=0, row=0, rowspan=2, sticky=N+W+E+S)
+
+        self.columnconfigure(index=0, weight=0)
+        self.columnconfigure(index=1, weight=1)
 
     def setup_widgets(self):
         self.color_buttons()
