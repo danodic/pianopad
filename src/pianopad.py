@@ -11,7 +11,7 @@ input_thread = InputThread()
 # Initialize the UI
 root = tk.Tk()
 root.wm_title("pianopad")
-root.geometry("800x600")
+root.geometry("320x900")
 app = MainWindow(input_thread, master=root)
 
 
