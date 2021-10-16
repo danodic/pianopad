@@ -71,16 +71,43 @@ class LaunchpadMiniMk2(Launchpad):
     function_keys = [104, 105, 106, 107, 108, 109, 110, 111]
     pad_notes = [ (7-(x//8))*16 + x%8 for x in range(64) ]
     side_keys = [ 8, 24, 40, 56, 72, 88, 104, 120 ]
+    color_map = {
+        0: (0, 0),
+        5: (3, 0), # red
+        6: (2, 0),
+        7: (1, 0),
+        9: (3, 3), # orange
+        10: (2, 2),
+        11: (1, 1),
+        13: (1, 3), # yellow
+        14: (1, 2),
+        15: (1, 1),
+        17: (0, 3), # green
+        18: (0, 2),
+        19: (0, 1),
+        25: (0, 3), # green
+        26: (0, 2),
+        27: (0, 1),
+        41: (0, 3), # blue (!)
+        42: (0, 2),
+        43: (0, 1),
+        29: (3, 3), # cyan (!)
+        31: (1, 1),
+        33: (2, 2), # cyan (!)
+        37: (2, 1), # light blue
+        39: (1, 1), # deep light blue (?)
+        49: (0, 2), # blue (!)
+        51: (0, 1), # dark blue
+        53: (3, 1), # purple (!)
+        55: (1, 0), # dark purple
+        57: (1, 3), # pink (!)
+    }
 
-    @staticmethod
-    def _map_color(color):
+    #@staticmethod
+    def _map_color(self, color):
         # map colors to rg velocity
-        if color == 0:
-            red=0
-            green=0
-        elif color in (5, 6):
-            red=3
-            green=0
+        if color in self.color_map:
+            red, green = self.color_map[color]
         else:
             red=1
             green=1
