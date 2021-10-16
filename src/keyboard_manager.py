@@ -75,7 +75,7 @@ def refresh_background(launchpad):
             for column in range(8):
 
                 # Transform the coordinate into the proper note
-                to_note = ((row+1) * 10) + (column+1)
+                to_note = launchpad.map_grid_to_note(row, column)
 
                 # Send the message
                 launchpad.light_on_color_code(to_note, color[row][column])

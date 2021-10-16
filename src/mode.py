@@ -247,9 +247,9 @@ class Mode:
         """
 
         """
-
         # Get the note to be played
-        actual_note = min(self.map_note_to_playfield(note) + self.current_root_note, 127)
+        row, column = launchpad.map_note_to_grid(note)
+        actual_note = min(self.playfield[row][column] + self.current_root_note, 127)
 
         if actual_note < 0:
             return
@@ -279,7 +279,8 @@ class Mode:
                 t.note_off(midiout_external, to_release)
 
             # Release the light
-            launchpad.light_on_color_code(note, self.map_note_to_colorfield(note))
+            row, column = launchpad.map_note_to_grid(note)
+            launchpad.light_on_color_code(note, self.background[row][column])
 
     def refresh_playfield(self):
 
@@ -353,22 +354,6 @@ class Mode:
                     if temp_root_notes[row][column] != 0:
                         self.background[row][column] = 5
 
-    def map_note_to_playfield(self, note):
-
-        # Define row and column
-        row = int(note/10) - 1
-        column = note % 10 - 1
-
-        return self.playfield[row][column]
-
-    def map_note_to_colorfield(self, note):
-
-        # Define row and column
-        row = int(note/10) - 1
-        column = note % 10 - 1
-
-        return self.background[row][column]
-
     def refresh_background(self, launchpad):
 
         # Go over the screen array and draw it
@@ -376,7 +361,7 @@ class Mode:
             for column in range(8):
 
                 # Transform the coordinate into the proper note
-                to_note = ((row+1) * 10) + (column+1)
+                to_note = launchpad.map_grid_to_note(row, column)
 
                 # Send the message
                 launchpad.light_on_color_code(to_note, self.background[row][column])

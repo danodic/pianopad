@@ -54,6 +54,18 @@ class LaunchpadMk2(Launchpad):
     fn_light_on = light_on
     fn_light_off = light_off
 
+    @staticmethod
+    def map_note_to_grid(note):
+        '''Maps to input note value to the grid row & column'''
+        row = int(note/10) - 1
+        column = note % 10 - 1
+        return (row, column)
+
+    @staticmethod
+    def map_grid_to_note(row, column):
+        '''Maps the grid row & column to a note'''
+        return ((row+1) * 10) + (column+1)
+
 
 class LaunchpadMiniMk2(Launchpad):
     function_keys = [104, 105, 106, 107, 108, 109, 110, 111]
@@ -113,3 +125,15 @@ class LaunchpadMiniMk2(Launchpad):
         if key in self.function_keys:
             message =  mido.Message('control_change', control=key, value=0)
             self.midiout.send(message)
+
+    @staticmethod
+    def map_note_to_grid(note):
+        '''Maps to input note value to the grid row & column'''
+        row = 7 - (note//16)
+        column = note%16
+        return (row, column)
+
+    @staticmethod
+    def map_grid_to_note(row, column):
+        '''Maps the grid row & column to a note'''
+        return (7-row) * 16 + column
